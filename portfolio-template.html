@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liem Fairbairn — Aeronautical Engineering Portfolio</title>
+<meta name="description" content="Engineering project portfolio of Liem Fairbairn, MEng Aeronautical Engineering, Imperial College London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS FILE
+  ============================================================
+  1. Replace every [bracketed] placeholder with your own text.
+     Bracketed text is styled in italics so it's easy to spot.
+  2. Each project has an "image placeholder" div — delete it and
+     put an <img> tag in its place, e.g.:
+       <img src="project1.jpg" alt="Description of the image">
+     Keep images in the same folder as this file, or use a full
+     URL if they're hosted elsewhere.
+  3. Update the CONTACT block at the bottom with your real email,
+     LinkedIn, GitHub, and (optionally) a link to your CV PDF.
+  4. To add or remove a project, copy/paste one whole
+     <article class="project"> ... </article> block.
+  5. Colours and fonts are set once at the top of the CSS in
+     :root { ... } — change them there and they update everywhere.
+  ============================================================
+-->
+
+<style>
+  :root {
+    --navy: #0E2236;
+    --navy-soft: #15304A;
+    --paper: #F7F6F1;
+    --paper-alt: #EEEBE3;
+    --ink: #1A2229;
+    --steel: #5C6B76;
+    --line-navy: rgba(255,255,255,0.14);
+    --line-paper: #D6D9D6;
+    --signal: #C1440E;
+    --signal-deep: #92350A;
+    --sky: #7FA6C4;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); margin: 0; }
+  p { margin: 0 0 1em; }
+  a { color: inherit; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .placeholder { font-style: italic; color: var(--steel); }
+  :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line-paper);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px; max-width: 1120px; margin: 0 auto; flex-wrap: wrap; gap: 12px;
+  }
+  .wordmark {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    letter-spacing: 0.02em; text-decoration: none; color: var(--ink);
+  }
+  .wordmark span { color: var(--signal); }
+  .nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.94rem; font-weight: 500; color: var(--ink);
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
+  }
+  .nav-links a:hover { border-bottom-color: var(--signal); }
+  .nav-cta {
+    font-family: var(--font-mono); font-size: 0.82rem; text-decoration: none;
+    color: var(--ink); border: 1px solid var(--ink); padding: 8px 14px;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--navy); color: var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px);
+    padding: 88px 0 64px;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono); font-size: 0.82rem; color: var(--sky);
+    margin: 0 0 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.6vw, 4rem); font-weight: 700; line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .hero-tagline {
+    font-size: 1.1rem; color: #D9E3EA; max-width: 46ch; margin-bottom: 32px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn {
+    display: inline-block; font-family: var(--font-body); font-weight: 600;
+    font-size: 0.95rem; text-decoration: none; padding: 12px 22px; border: 1.5px solid transparent;
+  }
+  .btn-primary { background: var(--signal); color: var(--paper); }
+  .btn-primary:hover { background: #A83A0C; }
+  .btn-ghost { border-color: rgba(255,255,255,0.55); color: var(--paper); }
+  .btn-ghost:hover { border-color: var(--paper); }
+
+  .specsheet {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 32px;
+    border-top: 1px solid var(--line-navy); padding-top: 22px; max-width: 460px;
+  }
+  .specsheet dt {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+    color: var(--sky); margin-bottom: 4px;
+  }
+  .specsheet dd { margin: 0; font-size: 0.95rem; }
+
+  .airfoil-wrap { text-align: center; }
+  .airfoil-wrap svg { width: 100%; max-width: 420px; height: auto; }
+  .airfoil-caption {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--sky);
+    margin-top: 10px; letter-spacing: 0.03em;
+  }
+  .airfoil-line {
+    fill: none; stroke: #C7DBE8; stroke-width: 1.4;
+    stroke-dasharray: 900; stroke-dashoffset: 900;
+    animation: draw 1.8s ease-out forwards;
+  }
+  .chord-line { stroke: rgba(255,255,255,0.35); stroke-width: 1; stroke-dasharray: 4 4; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .airfoil-line { animation: none; stroke-dashoffset: 0; }
+  }
+
+  /* ---------- Section heads ---------- */
+  .section { padding: 76px 0; }
+  .section-head { margin-bottom: 40px; max-width: 62ch; }
+  .section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); margin-bottom: 10px; }
+  .section-head p { color: var(--steel); font-size: 1.02rem; }
+
+  /* ---------- Projects ---------- */
+  .project-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;
+  }
+  .project {
+    border: 1px solid var(--line-paper); background: var(--paper);
+    display: flex; flex-direction: column;
+  }
+  .project-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 18px 20px; border-bottom: 2px solid var(--ink); gap: 10px;
+  }
+  .project-head h3 { font-size: 1.15rem; }
+  .project-sheet { font-family: var(--font-mono); font-size: 0.72rem; color: var(--steel); white-space: nowrap; }
+  .project-image {
+    margin: 20px 20px 0; height: 190px; border: 1.5px dashed var(--line-paper);
+    background: var(--paper-alt); display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 16px; color: var(--steel); font-size: 0.85rem;
+  }
+  .project-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+  .project-role { font-family: var(--font-mono); font-size: 0.78rem; color: var(--signal-deep); margin-bottom: 10px; }
+  .project-tools { font-family: var(--font-mono); font-size: 0.78rem; color: var(--steel); margin-bottom: 14px; }
+  .project-desc { font-size: 0.96rem; margin-bottom: 18px; flex: 1; }
+  .project-metrics {
+    display: flex; gap: 20px; border-top: 1px solid var(--line-paper); padding-top: 14px; flex-wrap: wrap;
+  }
+  .metric-value { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 500; }
+  .metric-label { font-size: 0.74rem; color: var(--steel); }
+
+  /* ---------- Skills ---------- */
+  .skills { background: var(--paper-alt); }
+  .skill-table { border-top: 1px solid var(--line-paper); }
+  .skill-row {
+    display: grid; grid-template-columns: 240px 1fr; gap: 24px;
+    padding: 18px 0; border-bottom: 1px solid var(--line-paper); align-items: baseline;
+  }
+  .skill-row h3 { font-size: 1rem; font-weight: 600; }
+  .chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--ink);
+    padding: 5px 11px; color: var(--ink);
+  }
+
+  /* ---------- Contact / footer ---------- */
+  .contact { background: var(--navy); color: var(--paper); padding: 60px 0 28px; }
+  .contact h2 { font-size: 1.6rem; margin-bottom: 8px; }
+  .contact-lead { color: #C9D6DE; max-width: 50ch; margin-bottom: 34px; }
+  .titleblock {
+    display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line-navy);
+  }
+  .titleblock div { padding: 16px 18px; border-right: 1px solid var(--line-navy); border-bottom: 1px solid var(--line-navy); }
+  .titleblock div:last-child { border-right: none; }
+  .titleblock dt {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--sky);
+    letter-spacing: 0.04em; margin-bottom: 6px;
+  }
+  .titleblock dd { margin: 0; font-size: 0.92rem; }
+  .titleblock a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); }
+  .titleblock a:hover { border-bottom-color: var(--paper); }
+  .rev-line {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--sky);
+    margin-top: 26px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .airfoil-wrap { order: -1; max-width: 280px; margin: 0 auto 8px; }
+    .specsheet { grid-template-columns: 1fr 1fr; max-width: 100%; }
+    .titleblock { grid-template-columns: 1fr 1fr; }
+    .skill-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (max-width: 520px) {
+    .titleblock { grid-template-columns: 1fr; }
+    .nav-links { gap: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#overview" class="wordmark">LIEM FAIRBAIRN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- Point this at your actual CV PDF once you have one uploaded somewhere -->
+    <a href="#" class="nav-cta">Download CV ↓</a>
+  </div>
+</header>
+
+<main>
+
+  <section id="overview" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="hero-eyebrow">MEng Aeronautical Engineering — Imperial College London</p>
+        <h1>Liem Fairbairn</h1>
+        <p class="hero-tagline">
+          <span class="placeholder">[One or two sentences on what you're about — e.g. "Aerospace engineering student
+          interested in aircraft structures and computational fluid dynamics, with hands-on project
+          experience in CAD, simulation, and analysis."]</span>
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="mailto:your.email@imperial.ac.uk" class="btn btn-ghost">Get in touch</a>
+        </div>
+        <dl class="specsheet">
+          <div>
+            <dt>Degree</dt>
+            <dd>MEng Aeronautical Engineering</dd>
+          </div>
+          <div>
+            <dt>Institution</dt>
+            <dd>Imperial College London</dd>
+          </div>
+          <div>
+            <dt>Year</dt>
+            <dd>2025 – 2029 · Year 2</dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>London, UK</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="airfoil-wrap">
+        <svg viewBox="0 0 400 130" role="img" aria-label="Airfoil cross-section line drawing">
+          <line x1="10" y1="62" x2="390" y2="66" class="chord-line"/>
+          <path class="airfoil-line" d="M10,62 C60,18 150,12 250,26 C320,36 370,50 390,66
+                   C370,78 320,92 250,98 C150,104 60,98 10,62 Z"/>
+        </svg>
+        <p class="airfoil-caption">REFERENCE AIRFOIL SECTION</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>A selection of design, simulation, and analysis work. Replace each panel below with one of your own projects.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project">
+          <div class="project-head">
+            <h3 class="placeholder">[Project title]</h3>
+            <span class="project-sheet">SHEET 01 / 03</span>
+          </div>
+          <div class="project-image">
+            Project image — delete this div and add an &lt;img&gt; tag here
+          </div>
+          <div class="project-body">
+            <p class="project-role placeholder">[Your role, e.g. "Individual project" or "Team of 4 — lead on structures"]</p>
+            <p class="project-tools placeholder">[Tool 1] · [Tool 2] · [Tool 3]</p>
+            <p class="project-desc placeholder">
+              [2–3 sentences: what the project was, the engineering problem you were solving,
+              and what you specifically did. Recruiters skim this — lead with the outcome or challenge.]
+            </p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value placeholder">[value]</div>
+                <div class="metric-label">[Key metric]</div>
+              </div>
+              <div>
+                <div class="metric-value placeholder">[value]</div>
+                <div class="metric-label">[Key metric]</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3 class="placeholder">[Project title]</h3>
+            <span class="project-sheet">SHEET 02 / 03</span>
+          </div>
+          <div class="project-image">
+            Project image — delete this div and add an &lt;img&gt; tag here
+          </div>
+          <div class="project-body">
+            <p class="project-role placeholder">[Your role]</p>
+            <p class="project-tools placeholder">[Tool 1] · [Tool 2]</p>
+            <p class="project-desc placeholder">
+              [What the project was, the challenge, and your contribution.]
+            </p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value placeholder">[value]</div>
+                <div class="metric-label">[Key metric]</div>
+              </div>
+              <div>
+                <div class="metric-value placeholder">[value]</div>
+                <div class="metric-label">[Key metric]</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3 class="placeholder">[Project title]</h3>
+            <span class="project-sheet">SHEET 03 / 03</span>
+          </div>
+          <div class="project-image">
+            Project image — delete this div and add an &lt;img&gt; tag here
+          </div>
+          <div class="project-body">
+            <p class="project-role placeholder">[Your role]</p>
+            <p class="project-tools placeholder">[Tool 1] · [Tool 2]</p>
+            <p class="project-desc placeholder">
+              [What the project was, the challenge, and your contribution.]
+            </p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value placeholder">[value]</div>
+                <div class="metric-label">[Key metric]</div>
+              </div>
+              <div>
+                <div class="metric-value placeholder">[value]</div>
+                <div class="metric-label">[Key metric]</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>Tools and methods used across the projects above.</p>
+      </div>
+      <div class="skill-table">
+        <div class="skill-row">
+          <h3>Design &amp; CAD</h3>
+          <div class="chip-list">
+            <span class="chip">Dassault 3DEXPERIENCE</span>
+            <span class="chip">Part Design</span>
+            <span class="chip">Assembly</span>
+            <span class="chip">Drafting</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h3>Simulation &amp; Analysis</h3>
+          <div class="chip-list">
+            <span class="chip">STAR-CCM+ (CFD)</span>
+            <span class="chip">Abaqus (FEA)</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h3>Programming</h3>
+          <div class="chip-list">
+            <span class="chip">Python</span>
+            <span class="chip">MATLAB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="contact">
+  <div class="container">
+    <h2>Get in touch</h2>
+    <p class="contact-lead">Open to internship and placement opportunities in aerospace engineering.</p>
+    <dl class="titleblock">
+      <div>
+        <dt>Name</dt>
+        <dd>Liem Fairbairn</dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:your.email@imperial.ac.uk" class="placeholder">[your.email@imperial.ac.uk]</a></dd>
+      </div>
+      <div>
+        <dt>LinkedIn</dt>
+        <dd><a href="#" class="placeholder">[linkedin.com/in/yourname]</a></dd>
+      </div>
+      <div>
+        <dt>GitHub</dt>
+        <dd><a href="#" class="placeholder">[github.com/yourusername]</a></dd>
+      </div>
+    </dl>
+    <p class="rev-line placeholder">REV. 01 — [add last updated date]</p>
+  </div>
+</footer>
+
+</body>
+</html>

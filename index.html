@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liem Fairbairn — Aeronautical Engineering Portfolio</title>
+<meta name="description" content="Engineering project portfolio of Liem Fairbairn, MEng Aeronautical Engineering, Imperial College London.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #0E2236;
+    --navy-soft: #15304A;
+    --paper: #F7F6F1;
+    --paper-alt: #EEEBE3;
+    --ink: #1A2229;
+    --steel: #5C6B76;
+    --line-navy: rgba(255,255,255,0.14);
+    --line-paper: #D6D9D6;
+    --signal: #C1440E;
+    --signal-deep: #92350A;
+    --sky: #7FA6C4;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); margin: 0; }
+  p { margin: 0 0 1em; }
+  a { color: inherit; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .placeholder { color: var(--steel); }
+  :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line-paper);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px; max-width: 1120px; margin: 0 auto; flex-wrap: wrap; gap: 12px;
+  }
+  .wordmark {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    letter-spacing: 0.02em; text-decoration: none; color: var(--ink);
+  }
+  .wordmark span { color: var(--signal); }
+  .nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.94rem; font-weight: 500; color: var(--ink);
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
+  }
+  .nav-links a:hover { border-bottom-color: var(--signal); }
+  .nav-cta {
+    font-family: var(--font-mono); font-size: 0.82rem; text-decoration: none;
+    color: var(--ink); border: 1px solid var(--ink); padding: 8px 14px;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--navy); color: var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 48px);
+    padding: 88px 0 64px;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono); font-size: 0.82rem; color: var(--sky);
+    margin: 0 0 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.6vw, 4rem); font-weight: 700; line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .hero-tagline {
+    font-size: 1.1rem; color: #D9E3EA; max-width: 46ch; margin-bottom: 32px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn {
+    display: inline-block; font-family: var(--font-body); font-weight: 600;
+    font-size: 0.95rem; text-decoration: none; padding: 12px 22px; border: 1.5px solid transparent;
+  }
+  .btn-primary { background: var(--signal); color: var(--paper); }
+  .btn-primary:hover { background: #A83A0C; }
+  .btn-ghost { border-color: rgba(255,255,255,0.55); color: var(--paper); }
+  .btn-ghost:hover { border-color: var(--paper); }
+
+  .specsheet {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 32px;
+    border-top: 1px solid var(--line-navy); padding-top: 22px; max-width: 460px;
+  }
+  .specsheet dt {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+    color: var(--sky); margin-bottom: 4px;
+  }
+  .specsheet dd { margin: 0; font-size: 0.95rem; }
+
+  /* ---------- Collage Overlay Styling ---------- */
+  .collage-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 280px;
+    margin: 0 auto;
+  }
+  .collage-img {
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    object-fit: cover;
+    border: 3px solid var(--paper);
+    transition: transform 0.3s ease, z-index 0.3s;
+  }
+  .collage-img:hover {
+    transform: scale(1.08) !important;
+    z-index: 10 !important;
+  }
+
+  /* ---------- Section heads ---------- */
+  .section { padding: 76px 0; }
+  .section-head { margin-bottom: 40px; max-width: 62ch; }
+  .section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); margin-bottom: 10px; }
+  .section-head p { color: var(--steel); font-size: 1.02rem; }
+
+  /* ---------- Projects ---------- */
+  .project-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;
+  }
+  .project {
+    border: 1px solid var(--line-paper); background: var(--paper);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .project-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 18px 20px; border-bottom: 2px solid var(--ink); gap: 10px;
+  }
+  .project-head h3 { font-size: 1.15rem; }
+  .project-sheet { font-family: var(--font-mono); font-size: 0.72rem; color: var(--steel); white-space: nowrap; }
+  
+  .project-image {
+    margin: 20px 20px 0; height: 210px; border: 1px solid var(--line-paper);
+    background: var(--paper-alt); display: flex; align-items: center; justify-content: center;
+    overflow: hidden; border-radius: 2px;
+  }
+  .project-image img, .project-image video {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .project-image.contain-img img {
+    object-fit: contain; padding: 12px; background: #fff;
+  }
+  
+  /* Robust Multi-media grid layout */
+  .multi-media-grid {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px;
+    padding: 0; background: transparent; height: 210px; margin: 20px 20px 0; overflow: hidden;
+  }
+  .multi-media-grid img, .multi-media-grid video {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 2px; border: 1px solid var(--line-paper); display: block;
+  }
+
+  .project-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+  .project-role { font-family: var(--font-mono); font-size: 0.78rem; color: var(--signal-deep); margin-bottom: 10px; }
+  .project-tools { font-family: var(--font-mono); font-size: 0.78rem; color: var(--steel); margin-bottom: 14px; }
+  .project-desc { font-size: 0.96rem; margin-bottom: 18px; flex: 1; }
+  .project-metrics {
+    display: flex; gap: 20px; border-top: 1px solid var(--line-paper); padding-top: 14px; flex-wrap: wrap; margin-top: auto;
+  }
+  .metric-value { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 500; }
+  .metric-label { font-size: 0.74rem; color: var(--steel); }
+
+  /* ---------- Skills ---------- */
+  .skills { background: var(--paper-alt); }
+  .skill-table { border-top: 1px solid var(--line-paper); }
+  .skill-row {
+    display: grid; grid-template-columns: 240px 1fr; gap: 24px;
+    padding: 18px 0; border-bottom: 1px solid var(--line-paper); align-items: baseline;
+  }
+  .skill-row h3 { font-size: 1rem; font-weight: 600; }
+  .chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--ink);
+    padding: 5px 11px; color: var(--ink);
+  }
+
+  /* ---------- Contact / footer ---------- */
+  .contact { background: var(--navy); color: var(--paper); padding: 60px 0 28px; }
+  .contact h2 { font-size: 1.6rem; margin-bottom: 8px; }
+  .contact-lead { color: #C9D6DE; max-width: 50ch; margin-bottom: 34px; }
+  .titleblock {
+    display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line-navy);
+  }
+  .titleblock div { padding: 16px 18px; border-right: 1px solid var(--line-navy); border-bottom: 1px solid var(--line-navy); }
+  .titleblock div:last-child { border-right: none; }
+  .titleblock dt {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--sky);
+    letter-spacing: 0.04em; margin-bottom: 6px;
+  }
+  .titleblock dd { margin: 0; font-size: 0.92rem; }
+  .titleblock a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); }
+  .titleblock a:hover { border-bottom-color: var(--paper); }
+  .rev-line {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--sky);
+    margin-top: 26px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .collage-wrap { order: -1; max-width: 100%; margin: 0 auto 20px; }
+    .specsheet { grid-template-columns: 1fr 1fr; max-width: 100%; }
+    .titleblock { grid-template-columns: 1fr 1fr; }
+    .skill-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media (max-width: 520px) {
+    .titleblock { grid-template-columns: 1fr; }
+    .nav-links { gap: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#overview" class="wordmark">LIEM FAIRBAIRN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="Liem%20Fairbairn%20CV.pdf" class="nav-cta" target="_blank">Download CV ↓</a>
+  </div>
+</header>
+
+<main>
+
+  <section id="overview" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="hero-eyebrow">MEng Aeronautical Engineering — Imperial College London</p>
+        <h1>Liem Fairbairn</h1>
+        <p class="hero-tagline">
+          Aerospace Engineering Student, interested in roles in the aerospace and defence sector, as well as astronautical and civil industries. Particular interests in thermodynamics and fluids.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="mailto:lf725@ic.ac.uk" class="btn btn-ghost">Get in touch</a>
+        </div>
+        <dl class="specsheet">
+          <div>
+            <dt>Degree</dt>
+            <dd>MEng Aeronautical Engineering</dd>
+          </div>
+          <div>
+            <dt>Institution</dt>
+            <dd>Imperial College London</dd>
+          </div>
+          <div>
+            <dt>Year</dt>
+            <dd>2025 – 2029 · Year 2</dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>London, UK (American and British Citizen)</dd>
+          </div>
+        </dl>
+      </div>
+      
+      <!-- Overlayed Image Collage -->
+      <div class="collage-wrap">
+        <img src="NASA techleap proj cover.png" class="collage-img" style="width: 170px; height: 130px; top: 0px; left: 0px; transform: rotate(-4deg); z-index: 2;" alt="NASA Techleap">
+        <img src="Final%20wind%20turbine%20blade%20in%20WT.jpg" class="collage-img" style="width: 150px; height: 150px; top: 20px; right: 10px; transform: rotate(5deg); z-index: 1;" alt="Wind Turbine Blade">
+        <img src="Aircraft%20Design%20cover.png" class="collage-img" style="width: 180px; height: 110px; bottom: 10px; left: 20px; transform: rotate(2deg); z-index: 3;" alt="Aircraft Design">
+        <img src="Pressure%20transducer%20image.png" class="collage-img" style="width: 130px; height: 130px; bottom: 20px; right: 20px; transform: rotate(-3deg); z-index: 4;" alt="Pressure Transducer">
+        <img src="Aerodynamics%20lab%20work%20cover.png" class="collage-img" style="width: 140px; height: 100px; top: 80px; left: 130px; transform: rotate(-6deg); z-index: 5;" alt="Aerodynamics Lab">
+      </div>
+      
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Completed Projects</h2>
+        <p>A selection of design, simulation, and analysis work.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project">
+          <div class="project-head">
+            <h3>NASA Techleap Robotically Manipulated Payload Challenge</h3>
+            <span class="project-sheet">SHEET 02 / 03</span>
+          </div>
+          <div class="project-image">
+            <img src="NASA techleap proj cover.png" alt="NASA Techleap Xenon Transfer System">
+          </div>
+          <div class="project-body">
+            <p class="project-role">Individual Submission (Sole Engineer)</p>
+            <p class="project-tools">Dassualt 3DExperience · MATLAB</p>
+            <p class="project-desc">
+              Designed and sized a xenon gas (IP propellant) transfer system to be assembled by FFR robotic arm, optimising supply tank for mass, and receiving tank for pressure sensitivity. Conceptualised an automated electromagnetic locking and gas release system activated upon assembly. Programmed and assessed the thermodynamic system in MATLAB and produced a written and video pitch. 
+            </p>
+	          <p><a href="NASA%20Techleap%20Xenon%20Transfer%20Proposal.pdf" target="_blank" style="text-decoration: underline;">View Full Submission (PDF)</a></p> 
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value">0.71 kg</div>
+                <div class="metric-label">Mass of Xenon Transferred</div>
+              </div>
+              <div>
+                <div class="metric-value">42 MPa</div>
+                <div class="metric-label">Worst Case Design Pressure</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>2 Blade Wind Turbine Design and Manufacturing</h3>
+            <span class="project-sheet">SHEET 01 / 03</span>
+          </div>
+          
+          <div class="multi-media-grid">
+            <img src="Wind%20turbine%20Group%20photo.jpg" alt="Wind Turbine Group Photo">
+            <img src="Final%20wind%20turbine%20blade%20in%20WT.jpg" alt="Final Wind Turbine Blade">
+            <img src="Wind%20Tunnel%20Turbine%20Results.jpg" alt="Wind Tunnel Turbine Results Data">
+            <video src="wind_tunnel_video.mp4" autoplay loop muted playsinline></video>
+          </div>
+
+          <div class="project-body">
+            <p class="project-role">Aerodynamics Team Member and Manufacturing Assist</p>
+            <p class="project-tools">Dassualt 3DExperience · MATLAB · 3D Printing · Abaqus</p>
+            <p class="project-desc">
+              Worked in implementing a number of aerodynamic corrections to BEM code, including tip/loss correction, axial induction factors, wake formation etc. Designed blade within budgetary, material, manufacturing, structural, and time constraints. Tested final blade in 10 m/s wind tunnel with full rotation and structural integrity achieved. 
+            </p>
+	          <p><a href="DMT_PED_G19.pdf" target="_blank" style="text-decoration: underline;">View Engineering Drawings Submissions</a></p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value">1609</div>
+                <div class="metric-label">RPM Achieved</div>
+              </div>
+              <div>
+                <div class="metric-value">13.8 W</div>
+                <div class="metric-label">Maximum Power Generated</div>
+              </div>
+	            <div>
+                <div class="metric-value">2.4</div>
+                <div class="metric-label">Optimum TSR</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Pressure Transducer Node Analysis</h3>
+            <span class="project-sheet">SHEET 03 / 03</span>
+          </div>
+          <div class="project-image">
+             <img src="Pressure transducer image.png" alt="Pressure Transducer Modes">
+          </div>
+          <div class="project-body">
+            <p class="project-role">Programming</p>
+            <p class="project-tools">MATLAB · Numerical Methods</p>
+            <p class="project-desc">
+              Assessed various methods to identify Bessel function nodes. Coursework centred on using Bessel functions to analyse pressure transducer oscillations. Compared processing time and accuracy for numerical integration, node finding, and interpolation methods. Program developed fully in MATLAB code. Achieved Score: 95%
+            </p>
+            <p><a href="Numerical%20Methods%20Coursework.pdf" target="_blank" style="text-decoration: underline;">View Coursework Assignment and Submission (PDF)</a></p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value">692</div>
+                <div class="metric-label">Lines of Code</div>
+              </div>
+              <div>
+                <div class="metric-value">0.029 s</div>
+                <div class="metric-label">Program runtime</div>
+              </div>
+              <div>
+                <div class="metric-value">4 nodes</div>
+                <div class="metric-label">Evaluated for Function orders 0-2</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Aerodynamics Lab Work</h3>
+            <span class="project-sheet">SHEET 02 / 03</span>
+          </div>
+          <div class="project-image">
+            <img src="Aerodynamics%20lab%20work%20cover.png" alt="Aerodynamics Graph">
+          </div>
+          <div class="project-body">
+            <p class="project-role">Experimental Group Member</p>
+            <p class="project-tools">STAR-CCM+ · MATLAB · Technical/Report Writing</p>
+            <p class="project-desc">
+              Carried out experimental pipe flow analysis using an orifice plate and pressure tappings, assessing alignment with theoretical results and computationally simulated results in STAR-CCM+. Compared radial position to flow velocity to derive pressure gradients. Compared results to Hagen/Prandtl predictions, and reported findings as a written lab report. 
+            </p>
+            <p><a href="Pipe%20Flow%20Lab%20report%20.pdf" target="_blank" style="text-decoration: underline;">View Submitted Lab Report (PDF)</a></p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value">&lt;20%</div>
+                <div class="metric-label">Error in Skin Friction Coefficient</div>
+              </div>
+              <div>
+                <div class="metric-value">3.7%</div>
+                <div class="metric-label">Error in Pressure Coefficient</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Aircraft Design Lab Work</h3>
+            <span class="project-sheet">Proj 04 / 05</span>
+          </div>
+          <div class="project-image">
+            <img src="Aircraft%20Design%20cover.png" alt="Aircraft CAD Drawing">
+          </div>
+          <div class="project-body">
+            <p class="project-role">Experimental Group Member</p>
+            <p class="project-tools">MATLAB · Technical/Report Writing · Wind Tunnel testing · Flight Simulator</p>
+            <p class="project-desc">
+              Compared validity of simulative flight to both wind tunnel analysis and theory, reporting on a number of parameters as assigned (see attachment). Wind tunnel tested a 1:24 model twin-jet executive aeroplane, identical to flight sim aircraft. Varied tailplane angle and measured changes in drag and lift. In simulation, carried out stall test, glide tests, and steady level flight tests. Individual role included calculating neutral point, zero-lift pitching moment coefficient, and effective lift curve slope.
+            </p>
+            <p><a href="I2a%20lab%20report.pdf" target="_blank" style="text-decoration: underline;">View Submitted Report (PDF)</a></p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value"20.9 in</div>
+                <div class="metric-label">Neutral point measured from CG offset 0in</div>
+              </div>
+              <div>
+                <div class="metric-value">1.5</div>
+                <div class="metric-label">Effective lift curve slope from trim calculations</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="ongoing-projects" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Ongoing Projects</h2>
+        <p>A selection of design, simulation, and analysis work.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project">
+          <div class="project-head">
+            <h3>Royal Aeronautical Society Light Aircraft Design Competition</h3>
+            <span class="project-sheet">Proj 05 / 05</span>
+          </div>
+          <div class="project-image contain-img">
+            <img src="RAeS%20logo%20for%20design%20competition.jpeg" alt="RAeS Logo">
+          </div>
+          <div class="project-body">
+            <p class="project-role">Engineering Team Member</p>
+            <p class="project-tools">Aerodynamics · Systems Integration · Structural Sizing</p>
+            <p class="project-desc">
+              Working in a team of 5 to submit a full design proposal for a 3-seater light co-op training aircraft. Design considerations include aerodynamics, propulsion, structures, cockpit, and sustainability. Further consideration is given to operational practicality, flight training methodology, systems integration, and human factors.
+            </p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value">2000 kg</div>
+                <div class="metric-label">Mass Limit</div>
+              </div>
+              <div>
+                <div class="metric-value">August 2027</div>
+                <div class="metric-label">Target Completion Date</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Drone Flight Controller Design</h3>
+            <span class="project-sheet">Proj 02 / 02</span>
+          </div>
+          <div class="project-image">
+             <img src="Screenshot 2026-09-03 at 17.04.53.png" alt="Drone Flight Controller PCB">
+          </div>
+          <div class="project-body">
+            <p class="project-role">Individual Project (Sole Engineer)</p>
+            <p class="project-tools">KiCAD · MATLAB · Microcontrollers</p>
+            <p class="project-desc">
+              Designing and manufacturing an autonomous drone flight controller from the ground up, integrating IMU sensor fusion, custom PCB layout in KiCAD, and PID feedback algorithms. Chip to be used: ArmF411, in correspondence with a UAT and GPS for autonomous control. Project aim is to develop a flight controller capable of working with voice activation. Project still in conception stage - image is stock
+            </p>
+            <div class="project-metrics">
+              <div>
+                <div class="metric-value">[tbc]</div>
+                <div class="metric-label">[tbc]</div>
+              </div>
+              <div>
+                <div class="metric-value">[tbc]</div>
+                <div class="metric-label">[tbc]</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>Tools and methods used across the projects above.</p>
+      </div>
+      <div class="skill-table">
+        <div class="skill-row">
+          <h3>Design &amp; CAD</h3>
+          <div class="chip-list">
+            <span class="chip">Dassault 3DEXPERIENCE</span>
+            <span class="chip">Part Design</span>
+            <span class="chip">Assembly</span>
+            <span class="chip">Drafting</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h3>Simulation &amp; Analysis</h3>
+          <div class="chip-list">
+            <span class="chip">STAR-CCM+ (CFD)</span>
+            <span class="chip">Abaqus (FEA)</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h3>Programming</h3>
+          <div class="chip-list">
+            <span class="chip">Python</span>
+            <span class="chip">MATLAB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="contact">
+  <div class="container">
+    <h2>Get in touch</h2>
+    <p class="contact-lead">Open to internship and placement opportunities in aerospace engineering.</p>
+    <dl class="titleblock">
+      <div>
+        <dt>Name</dt>
+        <dd>Liem Fairbairn</dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:lf725@ic.ac.uk">lf725@ic.ac.uk</a></dd>
+      </div>
+      <div>
+  <dt>LinkedIn</dt>
+  <dd><a href="https://www.linkedin.com/in/liem-fairbairn-89118a29b" target="_blank" rel="noopener noreferrer">linkedin.com/in/liem-fairbairn-89118a29b</a></dd>
+</div>
+    </dl>
+    <p class="rev-line">REV. 01 — September 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
